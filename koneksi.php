@@ -6,7 +6,7 @@ $db="ass2pengweb";
 
 $conn = mysqli_connect($host,$user,$password,$db);
 if (!$conn){
-	  die("konneksi gagal:".mysqli_connect_error());
+	  die("koneksi gagal:".mysqli_connect_error());
 }
 
 //query
