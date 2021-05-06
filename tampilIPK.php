@@ -1,7 +1,7 @@
 <?php 
 
     require "koneksi.php";
-    $semester = query("SELECT * FROM ipk");
+    $semester = query("SELECT * FROM mahasiswa");
 
 ?>
 

@@ -5,7 +5,7 @@ require 'koneksi.php';
 $semester = $_GET['semester'];
 
 //query data event berdasarkan id
-$semester = query("SELECT * FROM ipk WHERE semester= $semester")[0];
+$semester = query("SELECT * FROM mahasiswa WHERE semester= $semester")[0];
 
 //cek apakah tombol submit sudah ditekan atau belum
 if (isset($_POST["submit"])) {

@@ -29,7 +29,7 @@ function tambah($data)
 	$semester	=htmlspecialchars($data["semester"]);
   $ipk =htmlspecialchars($data["ipk"]);
   //insert data ipk
-  $query = "INSERT INTO ipk VALUES ('','$semester','$ipk');
+  $query = "INSERT INTO mahasiswa VALUES ('$semester','$ipk');
 ";
   mysqli_query($conn, $query);
   return mysqli_affected_rows($conn);
@@ -38,7 +38,7 @@ function tambah($data)
 function hapus($semester)
 {
   global $conn;
-  mysqli_query($conn, "DELETE FROM ipk WHERE semester = $semester");
+  mysqli_query($conn, "DELETE FROM mahasiswa WHERE semester = $semester");
   return mysqli_affected_rows($conn);
 } 
 
@@ -50,7 +50,7 @@ function ubah($data)
   $ipk 	=htmlspecialchars($data["ipk"]);
 
   // query update data ipk
-  $query = "UPDATE ipk SET
+  $query = "UPDATE mahasiswa SET
 		semester = '$semester',
 		ipk = '$ipk',
     

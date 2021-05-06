@@ -28,7 +28,7 @@
 <div class="container">
     <h2>Input Data</h2>
 
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label>Semester :</label>
             <input type="number" name="semester" class="form-control" placeholder="Masukan Semester" required />
