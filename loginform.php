@@ -1,36 +1,25 @@
 <?php
-session_start();
-require 'koneksi.php';
-if (isset($_SESSION["login"])) {
-    header("Location: index.php");
-    exit;
-}
 
+require 'koneksi.php';
 
 if (isset($_POST["login"])) {
-  //cekkk data berhasil
+  
   $username = $_POST["username"];
-  //$email = $_POST["email"];
   $password = $_POST["password"];
+
   $result = mysqli_query($conn, "SELECT * FROM users WHERE username = '$username'");
-    $row = mysqli_fetch_assoc($result);
   //cek username
   if (mysqli_num_rows($result) === 1) {
       //cek password
         
-        $role = $row["role"];
-        $nama = $row["nama"];
-        $username = $row["username"];
+      $row =mysqli_fetch_assoc($result);
         if (password_verify($password, $row["password"])) {
             //set session
-            $_SESSION["login"] = true;
-            $_SESSION["role"] = $row["role"];
-            $_SESSION["nama"] = $row["nama"];
-            $_SESSION["username"] = $row["username"];
+        
             echo "<script>
                     alert('Anda berhasil login');
                 </script>";
-            header("Location: ". $_GET["continue"]);
+            header("Location: index.php");
             exit;
         }
     }
@@ -54,24 +43,24 @@ if (isset($_POST["login"])) {
 <body>
     <!-- form -->
     <!-- Mengatur margin kanan kiri atas, membuat box shadow, dan padding-->
-    <form style="max-width: 480px; margin: auto; margin-top:9%; box-shadow: 0 3px 20px rgba(0,0,0,0.3); padding: 30px; " method="post" action="loginform.php?continue=<?= $_GET["continue"]?>">
+    <form action="loginform.php" style="max-width: 480px; margin: auto; margin-top:9%; box-shadow: 0 3px 20px rgba(0,0,0,0.3); padding: 30px; " method="POST" >
         <a href="index.php" class="float-right" title="">
             <small>Home</small>
         </a>
         <div class="form-group text-center">
             <h1 class="h2 mb-3 font-weight-normal" class="form-group text-center">Please log in</h1>
             <?php   if (isset($error)) : ?>
-                <p style="color: red; font-style: italic;">Email, Username atau Password anda salah! </p>
+                <p style="color: red; font-style: italic;"> Username atau Password anda salah! </p>
             <?php endif;   ?>
         </div>
         <div>
-            <label  for="exampleInputUsername1">Email or Username</label>
-            <input type="text" name="username" class="form-control" id="exampleInputUsername1" >
+            <label  for="username">Username</label>
+            <input type="text" name="username" class="form-control" id="username" >
             
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" >
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" id="password" >
         </div>
         <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="exampleCheck1">

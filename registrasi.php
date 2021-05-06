@@ -50,7 +50,6 @@ if (isset($_POST["submit"])) {
             </div>
 
             <button type="submit" name="submit" id="password" class="btn btn-primary">Sign Up</button>
-            <button type="reset" class="btn btn-danger">Reset</button>
             <br>
             <small>Sudah punya akun? </small>
             <a href="loginform.php" title="">

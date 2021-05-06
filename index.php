@@ -49,7 +49,7 @@ require 'koneksi.php';
   <section class="jumbotron text-center mb-5">
       <h1 class="display-4">SELAMAT DATANG</h1>
       <p class="lead">SILAHKAN LOGIN UNTUK MASUK KE SUB MENU LAIN</p>
-      <button style="margin-top: 20px;" type="button" class="btn btn-outline-primary">LOGIN</button>
+      <button style="margin-top: 20px;" type="button"  class="btn btn-outline-primary bg-primary"><a style="color: aliceblue; text-decoration: none;" href="loginform.php">LOGIN<a></button>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
           fill="#ffffff"
