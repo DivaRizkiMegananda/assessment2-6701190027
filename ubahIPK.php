@@ -5,7 +5,7 @@ require 'koneksi.php';
 $semester = $_GET['semester'];
 
 //query data ipk berdasarkan id
-$mahasiswa = query("SELECT * FROM mahasiswa WHERE semester= $semester")[0];
+$data = query("SELECT * FROM mahasiswa WHERE semester= $semester")[0];
 
 //cek apakah tombol submit sudah ditekan atau belum
 if (isset($_POST["submit"])) {
@@ -41,17 +41,15 @@ if (isset($_POST["submit"])) {
 <body>
 <div class="container">
     <h2>Input Data</h2>
-
-
-    <form action="" method="post" >
+    <form action="" method="POST" >
         <div class="form-group">
             <label>Semester :</label>
-            <input type="number" name="semester" class="form-control" placeholder="Masukan Semester" required value="<?= $mahasiswa["semester"]; ?>"/>
+            <input type="number" name="semester" class="form-control" placeholder="Masukan Semester" required value="<?= $data["semester"]; ?>"/>
 
         </div>
         <div class="form-group">
             <label>Jumlah IPK :</label>
-            <input type="text" name="ipk" class="form-control" placeholder="Masukan IPK " required value="<?= $mahasiswa["ipk"]; ?>"/>
+            <input type="text" name="ipk" class="form-control" placeholder="Masukan IPK " required value="<?= $data["ipk"]; ?>"/>
 
         </div>     
         <button type="submit" name="submit" class="btn btn-primary">Submit</button>
