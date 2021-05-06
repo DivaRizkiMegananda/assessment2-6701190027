@@ -63,4 +63,34 @@ function ubah($data)
   return mysqli_affected_rows($conn);
 }
 
+// registasi admin
+
+//tambah data user
+function tambahuser($data)
+{
+  global $conn;
+  //ambil data dari tiap elemen dalam form
+  $username = strtolower(stripcslashes(htmlspecialchars($data["username"])));
+  $password = mysqli_real_escape_string($conn, $data["password"]);
+
+  //cek username sudah ada atau belum
+  $result = mysqli_query($conn, "SELECT username FROM users WHERE username = '$username'");
+if (mysqli_fetch_assoc($result)) {
+  echo "<script>
+        alert('Username sudah terdaftar!')
+        </script>";
+        return false;
+}
+
+//enkripsi password
+  $password = password_hash($password, PASSWORD_DEFAULT);
+
+  //insert data
+  $query = "INSERT INTO users VALUES 
+   ('','$username','$password' );
+";
+  mysqli_query($conn,$query);
+  return mysqli_affected_rows($conn);
+}
+
 ?>
