@@ -2,8 +2,9 @@
   min-height: 2000;
 }
 .jumbotron {
-  padding-top: 2rem;
+  padding-top: 8rem;
   background: #87a9dd;
+  padding-bottom: 100px;
 }
 #projects {
   background: #87a9dd;
