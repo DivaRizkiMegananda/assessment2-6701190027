@@ -20,7 +20,7 @@ function query($query){
   return $rows;
 }
 
-// Event CRUD
+// ipk CRUD
 
 function tambah($data)
 {
@@ -28,10 +28,39 @@ function tambah($data)
   //ambil data dari tiap elemen dalam form
 	$semester	=htmlspecialchars($data["semester"]);
   $ipk =htmlspecialchars($data["ipk"]);
-  //insert data event
+  //insert data ipk
   $query = "INSERT INTO ipk VALUES ('','$semester','$ipk');
 ";
   mysqli_query($conn, $query);
   return mysqli_affected_rows($conn);
 }
+
+function hapus($semester)
+{
+  global $conn;
+  mysqli_query($conn, "DELETE FROM ipk WHERE semester = $semester");
+  return mysqli_affected_rows($conn);
+} 
+
+function ubah($data)
+{
+  global $conn;
+  //ambil data dari tiap elemen dalam form
+	$semester = htmlspecialchars($data["semester"]);
+  $ipk 	=htmlspecialchars($data["ipk"]);
+
+  // query update data ipk
+  $query = "UPDATE ipk SET
+		semester = '$semester',
+		ipk = '$ipk',
+    
+		WHERE semester = $semester
+		";
+
+  mysqli_query($conn, $query);
+
+
+  return mysqli_affected_rows($conn);
+}
+
 ?>
